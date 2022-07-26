@@ -89,6 +89,7 @@ def parse_pose(param):
     s, R, t3d = P2sRt(Ps)
     P = np.concatenate((R, t3d.reshape(3, -1)), axis=1)  # without scale
     pose = matrix2angle_corr(R)  # yaw, pitch, roll
+    print(pose)
     return P, pose, t3d
 
 
@@ -201,6 +202,8 @@ def draw_axis(img, yaw, pitch, roll, tdx=None, tdy=None, size = 100, pts68=None)
     yaw = -(yaw * np.pi / 180)
     roll = roll * np.pi / 180
 
+    print("Here are the Euler angles: {}, {}, {}".format(pitch, yaw, roll))
+    
     if tdx != None and tdy != None:
         tdx = tdx
         tdy = tdy
